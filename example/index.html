@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Parallax.js</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div id="container" class="wrapper">
+		<ul id="scene" class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15">
+			<li class="layer" data-depth="0.00"></li>
+			<li class="layer" data-depth="0.10"><div class="background"></div></li>
+			<li class="layer" data-depth="0.10"><div class="light orange b phase-4"></div></li>
+			<li class="layer" data-depth="0.10"><div class="light purple c phase-5"></div></li>
+			<li class="layer" data-depth="0.10"><div class="light orange d phase-3"></div></li>
+			<li class="layer" data-depth="0.15">
+				<ul class="rope depth-10">
+					<li><img src="picture/rope.png" alt="Rope"></li>
+					<li class="hanger position-2">
+						<div class="board cloud-2 swing-1"></div>
+					</li>
+					<li class="hanger position-4">
+						<div class="board cloud-1 swing-3"></div>
+					</li>
+					<li class="hanger position-8">
+						<div class="board birds swing-5"></div>
+					</li>
+				</ul>
+			</li>
+			<li class="layer" data-depth="0.20"></li>
+			<li class="layer" data-depth="0.30">
+				<ul class="rope depth-30">
+					<li><img src="picture/rope.png" alt="Rope"></li>
+					<li class="hanger position-1">
+						<div class="board cloud-1 swing-3"></div>
+					</li>
+					<li class="hanger position-5">
+						<div class="board cloud-4 swing-1"></div>
+					</li>
+				</ul>
+			</li>
+			<li class="layer" data-depth="0.30"><div class="wave paint depth-30"></div></li>
+			<li class="layer" data-depth="0.40"><div class="wave plain depth-40"></div></li>
+			<li class="layer" data-depth="0.50"><div class="wave paint depth-50"></div></li>
+			<li class="layer" data-depth="0.60"><div class="lighthouse depth-60"></div></li>
+			<li class="layer" data-depth="0.60">
+				<ul class="rope depth-60">
+					<li><img src="picture/rope.png" alt="Rope"></li>
+					<li class="hanger position-3">
+						<div class="board birds swing-5"></div>
+					</li>
+					<li class="hanger position-6">
+						<div class="board cloud-2 swing-2"></div>
+					</li>
+					<li class="hanger position-8">
+						<div class="board cloud-3 swing-4"></div>
+					</li>
+				</ul>
+			</li>
+			<li class="layer" data-depth="0.60"><div class="wave plain depth-60"></div></li>
+			<li class="layer" data-depth="0.80"><div class="wave plain depth-80"></div></li>
+			<li class="layer" data-depth="1.00"><div class="wave paint depth-100"></div></li>
+		</ul>
+		<section id="about" class="wrapper about hide accelerate">
+			<div class="cell accelerate">
+				<div class="cables center accelerate">
+					<div class="panel accelerate">
+						<header>
+							<h1>parallax<em>.js</em></h1>
+						</header>
+						<p>WOW, that's deep man! <strong>parallax.js</strong> reacts to the orientation of your smart device, offsetting layers depending on their depth within a scene... Oh, you don't have a smart device? No worries, if no gyroscope or motion detection hardware is available, <strong>parallax.js</strong> uses the position of your cursor instead. Radical.</p>
+						<br><br>
+					</div>
+				</div>
+			</div>
+		</section>
+		<button id="toggle" class="toggle i">
+			<div class="cross">
+				<div class="x"></div>
+				<div class="y"></div>
+			</div>
+		</button>
+		<div id="prompt" class="wrapper prompt hide accelerate">
+			<div class="cell accelerate">
+				<div class="panel center unselectable accelerate">
+					<button id="dismiss" class="dismiss">
+						<div class="cross">
+							<div class="x"></div>
+							<div class="y"></div>
+						</div>
+					</button>
+					<div class="tilt-scene">
+						<img class="tilt" src="picture/tilt.png">
+					</div>
+					<h2>Tilting is fun!</h2>
+					<p>For the best experience, check out this site on a mobile or tablet equipped with a gyroscope</p>
+					<p>(iPads are the coolest)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- <script src="js/jquery.parallax.js"></script> -->
+	<script>
+		var $html = $('html'),
+			$container = $('#container'),
+			$prompt = $('#prompt'),
+			$toggle = $('#toggle'),
+			$about = $('#about'),
+			$scene = $('#scene');
+		
+		// Resize handler.
+		(resize = function() {
+			$scene[0].style.width = window.innerWidth + 'px';
+			$scene[0].style.height = window.innerHeight + 'px';
+			if (!$prompt.hasClass('hide')) {
+				if (window.innerWidth < 600) {
+					$toggle.addClass('hide');
+				} else {
+					$toggle.removeClass('hide');
+				}
+			}
+		})();
+
+		// $scene.parallax();
+	</script>
+</body>
+</html>
